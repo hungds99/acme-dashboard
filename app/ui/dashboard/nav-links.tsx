@@ -1,29 +1,36 @@
 'use client';
 
 import {
-  UserGroupIcon,
-  HomeIcon,
   DocumentDuplicateIcon,
+  HomeIcon,
+  UserGroupIcon,
 } from '@heroicons/react/24/outline';
+import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import clsx from 'clsx';
 
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
+const GLOBAL_PREFETCH = true;
+
 const links = [
-  { name: 'Home', href: '/dashboard', icon: HomeIcon, prefetch: false },
+  {
+    name: 'Home',
+    href: '/dashboard',
+    icon: HomeIcon,
+    prefetch: GLOBAL_PREFETCH,
+  },
   {
     name: 'Invoices',
     href: '/dashboard/invoices',
     icon: DocumentDuplicateIcon,
-    prefetch: false,
+    prefetch: GLOBAL_PREFETCH,
   },
   {
     name: 'Customers',
     href: '/dashboard/customers',
     icon: UserGroupIcon,
-    prefetch: false,
+    prefetch: GLOBAL_PREFETCH,
   },
 ];
 
