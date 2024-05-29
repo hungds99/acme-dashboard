@@ -1,8 +1,9 @@
-import Form from '@/app/ui/invoices/edit-form';
+import { GLOBAL_PREFETCH } from '@/app/lib/constants';
+import { fetchCustomers, fetchInvoiceById } from '@/app/lib/data';
 import Breadcrumbs from '@/app/ui/invoices/breadcrumbs';
-import { fetchInvoiceById, fetchCustomers } from '@/app/lib/data';
-import { notFound } from 'next/navigation';
+import Form from '@/app/ui/invoices/edit-form';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 export const metadata: Metadata = {
   title: 'Edit Invoice',
@@ -23,11 +24,16 @@ export default async function Page({ params }: { params: { id: string } }) {
     <main>
       <Breadcrumbs
         breadcrumbs={[
-          { label: 'Invoices', href: '/dashboard/invoices' },
+          {
+            label: 'Invoices',
+            href: '/dashboard/invoices',
+            prefetch: GLOBAL_PREFETCH,
+          },
           {
             label: 'Edit Invoice',
             href: `/dashboard/invoices/${id}/edit`,
             active: true,
+            prefetch: GLOBAL_PREFETCH,
           },
         ]}
       />

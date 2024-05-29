@@ -1,5 +1,6 @@
 'use client';
 
+import { GLOBAL_PREFETCH } from '@/app/lib/constants';
 import {
   DocumentDuplicateIcon,
   HomeIcon,
@@ -11,8 +12,6 @@ import { usePathname } from 'next/navigation';
 
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
-const GLOBAL_PREFETCH = true;
-
 const links = [
   {
     name: 'Home',
