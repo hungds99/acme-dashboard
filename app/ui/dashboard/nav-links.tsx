@@ -1,6 +1,6 @@
 'use client';
 
-import { GLOBAL_PREFETCH } from '@/app/lib/constants';
+import { IS_PREFETCH } from '@/app/lib/constants';
 import {
   DocumentDuplicateIcon,
   HomeIcon,
@@ -17,19 +17,19 @@ const links = [
     name: 'Home',
     href: '/dashboard',
     icon: HomeIcon,
-    prefetch: GLOBAL_PREFETCH,
+    prefetch: IS_PREFETCH,
   },
   {
     name: 'Invoices',
     href: '/dashboard/invoices',
     icon: DocumentDuplicateIcon,
-    prefetch: GLOBAL_PREFETCH,
+    prefetch: IS_PREFETCH,
   },
   {
     name: 'Customers',
     href: '/dashboard/customers',
     icon: UserGroupIcon,
-    prefetch: GLOBAL_PREFETCH,
+    prefetch: IS_PREFETCH,
   },
 ];
 

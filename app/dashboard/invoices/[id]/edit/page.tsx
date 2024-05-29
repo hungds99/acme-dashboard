@@ -1,4 +1,4 @@
-import { GLOBAL_PREFETCH } from '@/app/lib/constants';
+import { IS_PREFETCH } from '@/app/lib/constants';
 import { fetchCustomers, fetchInvoiceById } from '@/app/lib/data';
 import Breadcrumbs from '@/app/ui/invoices/breadcrumbs';
 import Form from '@/app/ui/invoices/edit-form';
@@ -27,13 +27,13 @@ export default async function Page({ params }: { params: { id: string } }) {
           {
             label: 'Invoices',
             href: '/dashboard/invoices',
-            prefetch: GLOBAL_PREFETCH,
+            prefetch: IS_PREFETCH,
           },
           {
             label: 'Edit Invoice',
             href: `/dashboard/invoices/${id}/edit`,
             active: true,
-            prefetch: GLOBAL_PREFETCH,
+            prefetch: IS_PREFETCH,
           },
         ]}
       />

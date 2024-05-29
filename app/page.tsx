@@ -3,6 +3,7 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { lusitana } from '@/app/ui/fonts';
 import Image from 'next/image';
+import { IS_PREFETCH } from './lib/constants';
 
 export default function Page() {
   return (
@@ -23,6 +24,7 @@ export default function Page() {
           </p>
           <Link
             href="/login"
+            prefetch={IS_PREFETCH}
             className="flex items-center gap-5 self-start rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base"
           >
             <span>Log in</span> <ArrowRightIcon className="w-5 md:w-6" />

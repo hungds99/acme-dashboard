@@ -1,1 +1,1 @@
-export const GLOBAL_PREFETCH = false;
+export const IS_PREFETCH = false;
