@@ -1,12 +1,7 @@
-import { fetchFilteredCustomers } from '@/app/lib/data';
-import CustomersTable from '@/app/ui/customers/table';
-import { Metadata } from 'next';
+import ClientComponent from './client-component';
+import ServerComponent from './server-component';
 
-export const metadata: Metadata = {
-  title: 'Customers',
-};
-
-export default async function Page({
+export default function Page({
   searchParams,
 }: {
   searchParams?: {
@@ -14,13 +9,9 @@ export default async function Page({
     page?: string;
   };
 }) {
-  const query = searchParams?.query || '';
-
-  const customers = await fetchFilteredCustomers(query);
-
   return (
     <main>
-      <CustomersTable customers={customers} />
+      <ClientComponent></ClientComponent>
     </main>
   );
 }
