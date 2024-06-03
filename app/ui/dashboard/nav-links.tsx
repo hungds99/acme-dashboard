@@ -5,6 +5,7 @@ import {
   DocumentDuplicateIcon,
   HomeIcon,
   UserGroupIcon,
+  CubeIcon,
 } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import Link from 'next/link';
@@ -29,6 +30,12 @@ const links = [
     name: 'Customers',
     href: '/dashboard/customers',
     icon: UserGroupIcon,
+    prefetch: IS_PREFETCH,
+  },
+  {
+    name: 'Compositions',
+    href: '/dashboard/compositions',
+    icon: CubeIcon,
     prefetch: IS_PREFETCH,
   },
 ];
