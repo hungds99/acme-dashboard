@@ -1,11 +1,13 @@
+'use client';
+
+import { lusitana } from '@/app/ui/fonts';
 import {
   BanknotesIcon,
   ClockIcon,
-  UserGroupIcon,
   InboxIcon,
+  UserGroupIcon,
 } from '@heroicons/react/24/outline';
-import { lusitana } from '@/app/ui/fonts';
-import { fetchCardData } from '@/app/lib/data';
+import { useEffect, useState } from 'react';
 
 const iconMap = {
   collected: BanknotesIcon,
@@ -14,22 +16,36 @@ const iconMap = {
   invoices: InboxIcon,
 };
 
-export default async function CardWrapper() {
-  const {
-    numberOfInvoices,
-    numberOfCustomers,
-    totalPaidInvoices,
-    totalPendingInvoices,
-  } = await fetchCardData();
+export default function CardWrapper() {
+  console.info('Client-side rendering');
+  const [data, setData] = useState({
+    numberOfInvoices: 0,
+    numberOfCustomers: 0,
+    totalPaidInvoices: 0,
+    totalPendingInvoices: 0,
+  });
+
+  useEffect(() => {
+    console.info('Fetching data');
+    const fetchCardData = async () => {
+      const cardData = await fetch('/api/card').then((res) => res.json());
+      setData(cardData);
+    };
+    fetchCardData();
+  }, []);
 
   return (
     <>
-      <Card title="Collected" value={totalPaidInvoices} type="collected" />
-      <Card title="Pending" value={totalPendingInvoices} type="pending" />
-      <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
+      <Card title="Collected" value={data.totalPaidInvoices} type="collected" />
+      <Card title="Pending" value={data.totalPendingInvoices} type="pending" />
+      <Card
+        title="Total Invoices"
+        value={data.numberOfInvoices}
+        type="invoices"
+      />
       <Card
         title="Total Customers"
-        value={numberOfCustomers}
+        value={data.numberOfCustomers}
         type="customers"
       />
     </>
